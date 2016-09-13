@@ -3,16 +3,27 @@
 
 int main () {
 	char ch;
+	int wordCount = 0;
+	int symbolCount = 0;
+	int state = 0;
 
-	printf (“Enter text (Ctrl-D to quit).\n”);
+	printf ("Enter text (Ctrl-D to quit).\n");
 	while ( ch = getchar(), ch != EOF ) {
-		if ( islower(ch) ) {
-			ch = toupper(ch);
+		if ( isspace(ch) ) {
+			state = 0;
 		}
-		else {
-			ch = tolower(ch);
+		if ( (isalnum(ch) || ch == '_') && state != 1 ) {
+			state = 1;
+			wordCount++;
 		}
-		putchar(ch);
+		if ( ispunct(ch) && ch != '_' && state != 2 ) {
+			state = 2;
+			symbolCount++;
+		}
+		// putchar(ch);		
 	}
+	printf ("Your Symbol Count Was: %d -  Your Word Count Was: %d", symbolCount, wordCount);
+	// printf ("Your Word Count Was: %d\n", wordCount);
+	
 	return 0;
 }
