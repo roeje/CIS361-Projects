@@ -41,7 +41,8 @@ int main(int argc, char *argv[]) {
 	size = strlen(key);
 
 	/*Build integer array from key string*/
-	for (int i = 0; i < strlen(key); i++) {
+	int i;
+	for (i = 0; i < strlen(key); i++) {
 
 		if ( isupper(key[i]) ) {
 			keyNumerical[i] = (key[i] - 'A') % 26;
@@ -83,7 +84,9 @@ int main(int argc, char *argv[]) {
 char encrypt(char ch, int *k, int *num, int *size) {
 
 	/*Calculate Mod*/
-	int tmp = (int)fmod(*num, (double)*size);
+	/*fmod wasnt working in c99 mode for some reason*/
+	// int tmp = (int)fmod(*num, (double)*size);
+	int tmp = *num % *size;
 
 	if ( k[tmp] < 0 ) {
 		k[tmp] = k[tmp] + 26;

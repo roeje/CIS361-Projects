@@ -1,3 +1,5 @@
+CFLAGS=-std=gnu99
+
 cipher: cipher.o
 	gcc cipher.o -o cipher
 cipher.o: cipher.c
