@@ -1,13 +1,22 @@
+/*
+	CIS 361 - Lab 2
+	Jesse Roe
+	09/19/2016
+*/
+
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
+/*Encryption function declaration*/
 char encrypt(char ch, int *k, int *n, int *size);
 
+/*Main method*/
 int main(int argc, char *argv[]) {
 
+	/*Define variables*/
 	int choice;
 	char *key = NULL;
 	int *keyNumerical;
@@ -22,43 +31,31 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 
+	/*Assign values to variables*/
 	choice = strtol(argv[1], NULL, 10);
-	printf("Choice: %d\n", choice);
 	key = argv[2];
-	printf("Key: %s\n", key);
 	keyNumerical = (int*) malloc(strlen(key) * sizeof(int));
 	numOfCh = 0;
+
+	/*Size of dynamically allocated array*/
 	size = strlen(key);
 
-	printf("Size of Key: %d\n", strlen(key));
-
+	/*Build integer array from key string*/
 	for (int i = 0; i < strlen(key); i++) {
-		// printf("Is Upper: %d\n", isupper(key[i]));
+
 		if ( isupper(key[i]) ) {
 			keyNumerical[i] = (key[i] - 'A') % 26;
-			printf("Key: %c\n", key[i]);
-			printf("Converted KeyNum: %d\n", keyNumerical[i]);
 		}
-		// printf("Is Lower: %d\n", islower(key[i]));
+
 		if ( islower(key[i]) ) {
 			keyNumerical[i] = (key[i] - 'a') % 26;
-			printf("Key: %c\n", key[i]);
-			printf("Converted KeyNum: %d\n", keyNumerical[i]);
 		}
 	}
 
-	// printf("KeyNum at 0: %d\n", keyNumerical[0]);
-	// printf("KeyNum at 3: %d\n", keyNumerical[3]);
-	// printf("KeyNum at 4: %d\n", keyNumerical[4]);
-	// printf("KeyNum at 4: %d\n", keyNumerical[8]);
-
-	// convertKeyToIntArray(key, keyNumerical);
-
+	/*Invert key values for decryption*/
 	if (choice == 2) {
 		for (int i = 0; i < size; i++) {
-			printf("keyNumerical = %d\n", keyNumerical[i]);
 			keyNumerical[i] = -keyNumerical[i];
-			printf("keyNumerical After = %d\n", keyNumerical[i]);
 		}
 	}
 
@@ -69,8 +66,8 @@ int main(int argc, char *argv[]) {
 		printf("File could not be opened\n");
 		exit(1);
 	}
-	printf("Start Encryption Process:\n");
 
+	/*Encrypt/decrypt each file*/
 	while ( fscanf(fin, "%c", &ch) != EOF ) {
 		fprintf(fout, "%c", encrypt(ch, keyNumerical, &numOfCh, &size));
 	}
@@ -82,26 +79,10 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-// int convertKeyToIntArray(char *key, int *keyNumerical) {
-// 	printf("Key Size: %d\n", sizeof(key));
-// 	for (int i = 0; i < sizeof(key); i++) {
-// 		// printf("Is Upper: %d\n", isupper(key[i]));
-// 		if ( isupper(key[i]) ) {
-// 			keyNumerical[i] = (key[i] - 'A') % 26;
-// 			printf("Key: %c\n", key[i]);
-// 			printf("Converted KeyNum: %d\n", keyNumerical[i]);
-// 		}
-// 		// printf("Is Lower: %d\n", islower(key[i]));
-// 		if ( islower(key[i]) ) {
-// 			keyNumerical[i] = (key[i] - 'a') % 26;
-// 			printf("Key: %c\n", key[i]);
-// 			printf("Converted KeyNum: %d\n", keyNumerical[i]);
-// 		}
-// 	}
-// 	return 0;
-// }
-
+/*Encryption Function*/
 char encrypt(char ch, int *k, int *num, int *size) {
+
+	/*Calculate Mod*/
 	int tmp = (int)fmod(*num, (double)*size);
 
 	if ( k[tmp] < 0 ) {
