@@ -4,6 +4,6 @@ cipher.o: cipher.c
 
 test: test1 test2
 test1:
-	./cipher 1 5 data.txt data.out
+	./cipher 1 testkeyone data.txt data.out
 test2:
-	./cipher 2 5 data.out data.bak
+	./cipher 2 testkeyone data.out data.bak

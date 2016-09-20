@@ -4,16 +4,16 @@
 #include <string.h>
 #include <math.h>
 
-char encrypt(char ch, int *k, int *n);
+char encrypt(char ch, int *k, int *n, int *size);
 
 int main(int argc, char *argv[]) {
-	printf ("Starting\n");
 
 	int choice;
 	char *key = NULL;
 	int *keyNumerical;
 	char ch;
 	int numOfCh;
+	int size;
 	FILE *fin, *fout;
 
 	if (argc != 5) {
@@ -22,16 +22,17 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 
-	choice = argv[1];
+	choice = strtol(argv[1], NULL, 10);
 	printf("Choice: %d\n", choice);
 	key = argv[2];
 	printf("Key: %s\n", key);
-	keyNumerical = (int*) malloc(sizeof(key) * sizeof(int));
+	keyNumerical = (int*) malloc(strlen(key) * sizeof(int));
 	numOfCh = 0;
+	size = strlen(key);
 
-	printf("Size of Key: %d\n", sizeof(key));
+	printf("Size of Key: %d\n", strlen(key));
 
-	for (int i = 0; i < sizeof(key); i++) {
+	for (int i = 0; i < strlen(key); i++) {
 		// printf("Is Upper: %d\n", isupper(key[i]));
 		if ( isupper(key[i]) ) {
 			keyNumerical[i] = (key[i] - 'A') % 26;
@@ -46,16 +47,18 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	printf("KeyNum at 0: %d\n", keyNumerical[0]);
-	printf("KeyNum at 3: %d\n", keyNumerical[3]);
-	printf("KeyNum at 4: %d\n", keyNumerical[4]);
+	// printf("KeyNum at 0: %d\n", keyNumerical[0]);
+	// printf("KeyNum at 3: %d\n", keyNumerical[3]);
+	// printf("KeyNum at 4: %d\n", keyNumerical[4]);
+	// printf("KeyNum at 4: %d\n", keyNumerical[8]);
 
 	// convertKeyToIntArray(key, keyNumerical);
 
 	if (choice == 2) {
-		for (int i = 0; i < sizeof(keyNumerical); i++) {
+		for (int i = 0; i < size; i++) {
 			printf("keyNumerical = %d\n", keyNumerical[i]);
 			keyNumerical[i] = -keyNumerical[i];
+			printf("keyNumerical After = %d\n", keyNumerical[i]);
 		}
 	}
 
@@ -69,8 +72,7 @@ int main(int argc, char *argv[]) {
 	printf("Start Encryption Process:\n");
 
 	while ( fscanf(fin, "%c", &ch) != EOF ) {
-		fprintf(fout, "%c", encrypt(ch, keyNumerical, &numOfCh));
-		numOfCh++;
+		fprintf(fout, "%c", encrypt(ch, keyNumerical, &numOfCh, &size));
 	}
 
 	fclose(fin);
@@ -99,25 +101,23 @@ int main(int argc, char *argv[]) {
 // 	return 0;
 // }
 
-char encrypt(char ch, int *k, int *num) {
-	printf("Starting: N = %d \n", *num);
-	int tmp = (int)fmod(*num, sizeof(k));
+char encrypt(char ch, int *k, int *num, int *size) {
+	int tmp = (int)fmod(*num, (double)*size);
 
-	printf("KeyNum at 0: %d\n", k[0]);
-	printf("KeyNum at 3: %d\n", k[1]);
-	printf("KeyNum at 4: %d\n", k[2]);
-
-	printf("TempIndex: %d\n", tmp);
-	if ( k < 0 ) {
-		k = k + 26;
+	if ( k[tmp] < 0 ) {
+		k[tmp] = k[tmp] + 26;
 	}
 
 	if ( isupper(ch) ) {
-		return (ch - 'A' + k[tmp]) % 26 + 'A';
+		char x = (ch - 'A' + k[tmp]) % 26 + 'A';
+		*num = *num + 1;
+		return x;
 	}
 
 	if ( islower(ch) ) {
-		return (ch - 'a' + k[tmp]) % 26 + 'a';
+		char x = (ch - 'a' + k[tmp]) % 26 + 'a';
+		*num = *num + 1;
+		return x;
 	}
 
 	return ch;
