@@ -11,8 +11,8 @@
 
 int main ()
 {
-	const int MaxSize = 75000;
-	// const int MaxSize = 20000;  // Smaller testing size variable
+	// const int MaxSize = 75000;
+	const int MaxSize = 20000;  // Smaller testing size variable
 
 	int i, j, temp;
 
@@ -53,12 +53,20 @@ int main ()
 		Part two: processing a dynamically allocated array
 	*/
 
+
+
 	dynamicArray = (int*)malloc(MaxSize * sizeof(int)); // Create dynamic array of correct size
 
 	/* Populate array with descending values */
 	for (i = 0; i < MaxSize; i++) {
 		*(dynamicArray + i) = (MaxSize - i);
 	}
+
+	/* Output Sorted Array Test */
+	// printf("Before Sorted Dynaimc Array:\n");
+	// for (i = 0; i < MaxSize; i++) {
+	// 	printf("%d\n", *(dynamicArray + i));
+	// }
 
 	clock_t dynamicBegin = clock(); // Log start of dynamic segment
 	/* Sort array */
@@ -71,8 +79,30 @@ int main ()
 				*p = tmp;
 			}
 		}
-		
-	}	
+
+		// for (j = (MaxSize - 1); j > i; j--) {
+		// 	int first = *(dynamicArray + (j - 1));
+		// 	// printf("A = %d\n", *first);
+		// 	int second = *(dynamicArray + j);
+		// 	// printf("B = %d\n", *second);
+		// 	if (first > second) {
+		// 		int tmp = first;
+		// 		*(dynamicArray + (j - 1)) = second;
+		// 		*(dynamicArray + j) = tmp;
+		// 	}
+		// }
+	}
+
+	/* Old version */
+	// for (i = 0; i < (MaxSize - 1); i++) {
+	// 	for (j = (MaxSize - 1); j > i; j--) {
+	// 		if (*(dynamicArray + (j - 1)) > *(dynamicArray + j)) {
+	// 			int tmp = *(dynamicArray + (j - 1));
+	// 			*(dynamicArray + (j - 1)) = *(dynamicArray + j);
+	// 			*(dynamicArray + j) = tmp;
+	// 		}
+	// 	}
+	// }
 
 	clock_t dynamicEnd = clock(); // Log end of dynamic segment
 
@@ -81,6 +111,7 @@ int main ()
 	// for (i = 0; i < MaxSize; i++) {
 	// 	printf("%d\n", *(dynamicArray + i));
 	// }
+
 
 	// Display the amount of time used for each part above
 	printf("Time used for Static Array: %lf %s\n", (double)(staticEnd - staticBegin) / CLOCKS_PER_SEC, "Seconds");
