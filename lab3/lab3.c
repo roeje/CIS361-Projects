@@ -71,8 +71,23 @@ int main ()
 				*p = tmp;
 			}
 		}
+<<<<<<< HEAD
 		
 	}	
+=======
+	}
+
+	/*Old version*/
+	// for (i = 0; i < (MaxSize - 1); i++) {
+	// 	for (j = (MaxSize - 1); j > i; j--) {
+	// 		if (*(dynamicArray + (j - 1)) > *(dynamicArray + j)) {
+	// 			int tmp = *(dynamicArray + (j - 1));
+	// 			*(dynamicArray + (j - 1)) = *(dynamicArray + j);
+	// 			*(dynamicArray + j) = tmp;
+	// 		}
+	// 	}
+	// }
+>>>>>>> dev
 
 	clock_t dynamicEnd = clock(); // Log end of dynamic segment
 
