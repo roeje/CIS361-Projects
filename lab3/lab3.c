@@ -84,6 +84,7 @@ int main ()
 		}
 	}
 
+	/*Old version*/
 	// for (i = 0; i < (MaxSize - 1); i++) {
 	// 	for (j = (MaxSize - 1); j > i; j--) {
 	// 		if (*(dynamicArray + (j - 1)) > *(dynamicArray + j)) {
