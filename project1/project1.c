@@ -34,13 +34,7 @@ char encrypt(char ch, int *k, int *n, int *size);
 /*Main method*/
 int main(int argc, char *argv[]) {
 
-  char key[] = "ttest";
-
-  printf("Origional: %s\n", key);
-
-  char* result = removeDuplicates(key);
-
-  printf("Result: %s\n", result);
+  char encrypt[], decrypt[];
 
 	// /*Define variables*/
 	// int choice;
@@ -108,10 +102,10 @@ int main(int argc, char *argv[]) {
 
 
 char* removeDuplicates(char word[]) {
-  int i, int j, int size, int k;
+  int i, j, size, k;
   size = strlen(word);
   for (i = 0; i < size; i++) {
-    for (j = k = (i + 1); k <= size) {
+    for (j = k = (i + 1); k <= size;) {
       if (word[i] != word[k]) {
         word[j] = word[k];
         k++;
