@@ -29,7 +29,6 @@ int main() {
 	}
 
 	done:
-		// printf ("Test: %s\n", strnsub(p1, LEN));
 		printf ("the first substring: %s\n", strnsub(p1, LEN));
 		printf ("the second substring: %s\n", strnsub(p2, LEN));
 
@@ -39,9 +38,10 @@ int main() {
 // returns a string with the first n characters of string p
 
 char* strnsub (char *p, int n) {
-		char s[n + 1]; // Create temp array to store substring
-		strncpy(s, p, n); // Copy substring
-		s[n] = '\0';
-		char* out = s;
+		char s[n]; // Create temp array to store substring
+      char* out = s;
+		strncpy(out, p, n); // Copy substring
+		*(out + n) = '\0';
+
 		return out;
 }

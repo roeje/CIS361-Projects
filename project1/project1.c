@@ -31,10 +31,19 @@ void processInput(FILE * inf, FILE * outf, char substitute[]);
 /*Encryption function declaration*/
 char encrypt(char ch, int *k, int *n, int *size);
 
+// Test Functions
+void testTargetFound();
+void testEncryptArray();
+
+
+
+
 /*Main method*/
 int main(int argc, char *argv[]) {
 
-  char encrypt[], decrypt[];
+  testTargetFound();
+
+  testEncryptArray();
 
 	// /*Define variables*/
 	// int choice;
@@ -122,15 +131,36 @@ char* removeDuplicates(char word[]) {
 }
 
 int targetFound(char charArray[], int num, char target) {
-
-
-  return 1;
+   int i;
+   for (i = 0; i < num; i++) {
+      if (charArray[i] == target) {
+         return 1;
+      }
+   }
+   return 0;
 }
 
 void initializeEncyptArray(char key[], char encrypt[]) {
+   int size = strlen(key);
+   char base = 'Z';
+   int i;
 
-
-
+   for (i = 0; i < 26; i++) {
+      if(i < size) {
+         if ( isupper(key[i]) ) {
+      			encrypt[i] = (key[i] - 'A') % 26;
+      	}
+        	if ( islower(key[i]) ) {
+      			encrypt[i] = (key[i] - 'a') % 26;
+      	}
+      }
+      else {
+         while (!targetFound(key, size, base)) {
+            base = base - 1;
+         }
+         encrypt[i] = (base - 'A') % 26;
+      }
+   }
 }
 
 void initializeDecyptArray(char encypt[], char decrypt[]) {
@@ -170,4 +200,31 @@ char encrypt(char ch, int *k, int *num, int *size) {
 	}
 
 	return ch;
+}
+
+
+void testTargetFound() {
+
+   char tmp[] = "hello there";
+   printf("String is: hello there\n");
+   printf("Does the String contain: ");
+   char target = 't';
+   printf("%c\n", target);
+
+   int x;
+   x = targetFound(tmp, 11, target);
+
+   printf("Result is: %d\n",x);
+}
+
+void testEncryptArray() {
+   char encr[26];
+   char word[] = "testtest";
+
+
+   char * key = removeDuplicates(word);
+
+   printf("Key is: %s\n", key);
+   initializeEncyptArray(key, encr);
+   printf("Encrypted Array: %c\n", encr[0]);
 }
