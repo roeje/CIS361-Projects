@@ -1,7 +1,7 @@
 /*
 	CIS 361 - Project 1
 	Jesse Roe
-	09/19/2016
+	10/04/2016
 */
 
 #include <ctype.h>
@@ -18,10 +18,10 @@ char * removeDuplicates(char word []);
 int targetFound(char charArray[], int num, char target);
 
 // initialize the encrypt array with appropriate cipher letters according to the given key
-void initializeEncyptArray(char key[], char encrypt[]);
+void initializeEncryptArray(char key[], char encrypt[]);
 
 // initialize the decrypt array with appropriate substitute letters based on the encrypt array
-void initializeDecyptArray(char encypt[], char decrypt[]);
+void initializeDecryptArray(char encypt[], char decrypt[]);
 
 // process data from the input file and write the result to the output file
 // pass the encrypt array to parameter substitute if encryption is intended
@@ -33,38 +33,39 @@ char encrypt(char ch, int *k, int *n, int *size);
 
 // Test Functions
 void testRmDuplicates();
+void testToUpperCase();
 void testTargetFound();
 void testEncryptArray();
+void testDecryptAarry();
 
 
 /*Main method*/
 int main(int argc, char *argv[]) {
 
-  testRmDuplicates();
-
-  //testTargetFound();
-
-  //testEncryptArray();
+// testRmDuplicates();
+//testTargetFound();
+// testEncryptArray();
+// testDecryptAarry();
 
 	/*Define variables*/
-	int choice;
-	char *key = NULL;
-	char *newKey;
-	char ch;
-	int numOfCh;
-	int size;
-	FILE *fin, *fout;
-  
+   int choice;
+   char *key = NULL;
+   char *newKey;
+   char ch;
+   int numOfCh;
+   int size;
+   FILE *fin, *fout;
+
 	if (argc != 5) {
 	  printf ("Usage: cipher option key infile, outfile\n");
 	  printf ("Option 1 for encryption and 2 for decryption\n");
 	  exit(1);
 	}
- 
-	/*Assign values to variables*/
-	choice = strtol(argv[1], NULL, 10);
-	key = argv[2];
-	
+
+   /*Assign values to variables*/
+   choice = strtol(argv[1], NULL, 10);
+   key = argv[2];
+
 	fin = fopen(argv[3], "r");
 	fout = fopen(argv[4], "w");
 
@@ -74,43 +75,42 @@ int main(int argc, char *argv[]) {
 	}
 
 	newKey = removeDuplicates(key);
-	
+
 	if (choice == 1) {
-	  
-	  initializeEncyptArray(newKey,encrypt);  
-	  
+
+	  initializeEncyptArray(newKey,encrypt);
+
 	  processInput(fin, fout, encrypt);
-	  
+
 	}
 	else {
-	  
+
 	  initializeDecyptArray(newKey, decrypt);
 	  processInput(fin, fout, decrypt);
 	}
 
-	
+
 	// /*Encrypt/decrypt each file*/
 	// while ( fscanf(fin, "%c", &ch) != EOF ) {
 	// 	fprintf(fout, "%c", encrypt(ch, keyNumerical, &numOfCh, &size));
 	// }
-	
-	
+
+
 	fclose(fin);
 	fclose(fout);
-	
+
 	return 0;
 }
 
-// Not working yet, need to create new array to store non duplicate characters
+
 char* removeDuplicates(char word[]) {
-  char tmp[(int)strlen(word)];
   int i, j, size, k;
+  char* out
   size = strlen(word);
   for (i = 0; i < size; i++) {
-    
     for (j = k = (i + 1); k <= size;) {
       if (word[i] != word[k]) {
-        tmp[i] = word[k];
+        word[j] = word[k];
         k++;
         j++;
       }
@@ -119,8 +119,7 @@ char* removeDuplicates(char word[]) {
       }
     }
   }
-
-  char* out  = word;
+  out = word;
   return out;
 }
 
@@ -134,54 +133,50 @@ int targetFound(char charArray[], int num, char target) {
    return 0;
 }
 
-void initializeEncyptArray(char key[], char encrypt[]) {
-   int size = strlen(key);
-   printf("Size: %d\n", size);
+void initializeEncryptArray(char key[], char encrypt[]) {
+   int size, i, j;
    char base = 'Z';
-   int i;
-
+   size = strlen(key);
    for (i = 0; i < size; i++) {
       encrypt[i] = key[i];
    }
-
-   int j;
-   for (j = size; j < 26; j++) { 
-        
-         while (targetFound(encrypt, (size - 1), base)) {
-            base--;
-         }
-         encrypt[i] = base;
-      
- 	 printf("%c\n", encrypt[j]);
+   for (j = size; j < 26; j++) {
+      while (targetFound(key, size, base)) {
+         base--;
+      }
+      encrypt[j] = base;
+      base--;
    }
    encrypt[26] = '\0';
 }
 
-void initializeDecyptArray(char encypt[], char decrypt[]) {
-
+void initializeDecryptArray(char encrypt[], char decrypt[]) {
 	int i;
-
 	for (i = 0; i < 26; i++) {
 		decrypt[encrypt[i] - 65] = 65 + i;
-	
 	}
-
-	encrypt[26] = '\0';
-
+	decrypt[26] = '\0';
 }
 
 void processInput(FILE * inf, FILE * outf, char substitute[]) {
-  
-  
-  while ( fscanf(fin, "%c", &ch) != EOF ) {
-    fprintf(fout, "%c", substitute[ch]);
-  }
 
+
+  // while ( fscanf(inf, "%c", &ch) != EOF ) {
+  //   fprintf(outf, "%c", substitute[ch]);
+  // }
+
+}
+
+void toUpperCase(char word[]) {
+    int i;
+    for (i = 0; i < strlen(word); i++) {
+        word[i] = toupper(word[i]);
+    }
 }
 
 /*Encryption Function*/
 char encrypt(char ch, int *k, int *num, int *size) {
-	
+
 	int tmp = *num % *size;
 
 	if ( k[tmp] < 0 ) {
@@ -209,27 +204,39 @@ void testRmDuplicates() {
 }
 
 void testTargetFound() {
-
    char tmp[] = "hello there";
    printf("String is: hello there\n");
    printf("Does the String contain: ");
    char target = 't';
    printf("%c\n", target);
-
    int x;
    x = targetFound(tmp, 11, target);
-
    printf("Result is: %d\n",x);
 }
 
 void testEncryptArray() {
-   char encr[26];
+   char encrypt[26];
    char word[] = "testtest";
-
-
    char * key = removeDuplicates(word);
-
+   toUpperCase(key);
    printf("Key is: %s\n", key);
-   initializeEncyptArray(key, encr);
-   printf("Encrypted Array: %d\n", (char)encr[0]);
+   initializeEncryptArray(key, encrypt);
+   printf("Encrypted Array: %s\n", encrypt);
+}
+
+void testDecryptAarry() {
+   char encrypt[26], decrypt[26];
+   char word[] = "feather";
+   char* key = removeDuplicates(word);
+   toUpperCase(key);
+   printf("Key is: %s\n", key);
+   initializeEncryptArray(key, encrypt);
+   initializeDecryptArray(encrypt, decrypt);
+   printf("Decrypt Array is: %s\n", decrypt);
+}
+
+void testToUpperCase() {
+    char word[] = "hello";
+    toUpperCase(word);
+    printf("The word is: %s\n", word);
 }
