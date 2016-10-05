@@ -28,6 +28,8 @@ void initializeDecryptArray(char encypt[], char decrypt[]);
 // pass the decrypt array to parameter substitute if decryption is intended
 void processInput(FILE * inf, FILE * outf, char substitute[]);
 
+void toUpperCase(char word[]);
+
 /*Encryption function declaration*/
 char encrypt(char ch, int *k, int *n, int *size);
 
@@ -50,10 +52,8 @@ int main(int argc, char *argv[]) {
 	/*Define variables*/
    int choice;
    char *key = NULL;
-   char *newKey;
-   char ch;
-   int numOfCh;
-   int size;
+   char *newKey = NULL;
+   char decrypt[26], encrypt[26];
    FILE *fin, *fout;
 
 	if (argc != 5) {
@@ -75,26 +75,23 @@ int main(int argc, char *argv[]) {
 	}
 
 	newKey = removeDuplicates(key);
+   toUpperCase(newKey);
+   printf("The Key is: %s\n", newKey);
 
 	if (choice == 1) {
 
-	  initializeEncyptArray(newKey,encrypt);
-
+	  initializeEncryptArray(newKey,encrypt);
+     printf("Encrypt Array is: %s\n", encrypt);
 	  processInput(fin, fout, encrypt);
 
 	}
 	else {
-
-	  initializeDecyptArray(newKey, decrypt);
+     initializeEncryptArray(newKey, encrypt);
+     printf("Encrypt Array is: %s\n", encrypt);
+	  initializeDecryptArray(encrypt, decrypt);
+     printf("Decrypt Array is: %s\n", decrypt);
 	  processInput(fin, fout, decrypt);
 	}
-
-
-	// /*Encrypt/decrypt each file*/
-	// while ( fscanf(fin, "%c", &ch) != EOF ) {
-	// 	fprintf(fout, "%c", encrypt(ch, keyNumerical, &numOfCh, &size));
-	// }
-
 
 	fclose(fin);
 	fclose(fout);
@@ -102,10 +99,9 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-
 char* removeDuplicates(char word[]) {
   int i, j, size, k;
-  char* out
+  char* out;
   size = strlen(word);
   for (i = 0; i < size; i++) {
     for (j = k = (i + 1); k <= size;) {
@@ -159,12 +155,20 @@ void initializeDecryptArray(char encrypt[], char decrypt[]) {
 }
 
 void processInput(FILE * inf, FILE * outf, char substitute[]) {
-
-
-  // while ( fscanf(inf, "%c", &ch) != EOF ) {
-  //   fprintf(outf, "%c", substitute[ch]);
-  // }
-
+   char ch;
+   while (fscanf(inf, "%c", &ch) != EOF) {
+      if (isalpha(ch)) {
+         if (isupper(ch)) {
+            fprintf(outf, "%c", substitute[ch - 65]);
+         }
+         else {
+            fprintf(outf, "%c", tolower(substitute[toupper(ch) - 65]));
+         }
+      }
+      else {
+         fprintf(outf, "%c", ch);
+      }
+   }
 }
 
 void toUpperCase(char word[]) {
