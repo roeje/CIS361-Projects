@@ -28,6 +28,7 @@ void initializeDecryptArray(char encypt[], char decrypt[]);
 // pass the decrypt array to parameter substitute if decryption is intended
 void processInput(FILE * inf, FILE * outf, char substitute[]);
 
+// Helper function to convert string to uppercase
 void toUpperCase(char word[]);
 
 /*Encryption function declaration*/
@@ -40,14 +41,8 @@ void testTargetFound();
 void testEncryptArray();
 void testDecryptAarry();
 
-
 /*Main method*/
 int main(int argc, char *argv[]) {
-
-// testRmDuplicates();
-//testTargetFound();
-// testEncryptArray();
-// testDecryptAarry();
 
 	/*Define variables*/
    int choice;
@@ -56,43 +51,51 @@ int main(int argc, char *argv[]) {
    char decrypt[26], encrypt[26];
    FILE *fin, *fout;
 
+   // Check to see if correct number of commandline parameter were passed
 	if (argc != 5) {
 	  printf ("Usage: cipher option key infile, outfile\n");
 	  printf ("Option 1 for encryption and 2 for decryption\n");
 	  exit(1);
 	}
 
-   /*Assign values to variables*/
+   /*Assign values from commandline to variables*/
    choice = strtol(argv[1], NULL, 10);
    key = argv[2];
 
+   // Attempt to open files passed from commandline
 	fin = fopen(argv[3], "r");
 	fout = fopen(argv[4], "w");
 
+   // Check if files were opened correctly
 	if (fin ==  NULL || fout == NULL) {
 	  printf("File could not be opened\n");
 	  exit(1);
 	}
 
+   // Remove duplicates from key and convert to uppercase
 	newKey = removeDuplicates(key);
    toUpperCase(newKey);
-   printf("The Key is: %s\n", newKey);
 
+   // Based on user input, setup arrays for decryption or encryption
+
+   // If encryption option
 	if (choice == 1) {
-
 	  initializeEncryptArray(newKey,encrypt);
-     printf("Encrypt Array is: %s\n", encrypt);
-	  processInput(fin, fout, encrypt);
 
+     // Call processing function
+	  processInput(fin, fout, encrypt);
 	}
+
+   // Otherwise, decrypt
 	else {
      initializeEncryptArray(newKey, encrypt);
-     printf("Encrypt Array is: %s\n", encrypt);
 	  initializeDecryptArray(encrypt, decrypt);
-     printf("Decrypt Array is: %s\n", decrypt);
+
+     // Call processing function
 	  processInput(fin, fout, decrypt);
 	}
 
+   // Close files
 	fclose(fin);
 	fclose(fout);
 
@@ -176,30 +179,6 @@ void toUpperCase(char word[]) {
     for (i = 0; i < strlen(word); i++) {
         word[i] = toupper(word[i]);
     }
-}
-
-/*Encryption Function*/
-char encrypt(char ch, int *k, int *num, int *size) {
-
-	int tmp = *num % *size;
-
-	if ( k[tmp] < 0 ) {
-		k[tmp] = k[tmp] + 26;
-	}
-
-	if ( isupper(ch) ) {
-		char x = (ch - 'A' + k[tmp]) % 26 + 'A';
-		*num = *num + 1;
-		return x;
-	}
-
-	if ( islower(ch) ) {
-		char x = (ch - 'a' + k[tmp]) % 26 + 'a';
-		*num = *num + 1;
-		return x;
-	}
-
-	return ch;
 }
 
 void testRmDuplicates() {
