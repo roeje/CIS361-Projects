@@ -6,7 +6,7 @@
 char* strnsub (char *p, int n);
 
 int main() {
-	char line[] = "His textbook was bought from that bookstore";
+	char line[] = "His texttree was bought from that treestore";
 	char *p1, *p2;
 
 	//set p1 to the beginning of string line;
@@ -41,7 +41,7 @@ char* strnsub (char *p, int n) {
 		char s[n]; // Create temp array to store substring
       char* out = s;
 		strncpy(out, p, n); // Copy substring
-		*(out + n) = '\0';
+		*(out + n) = '\0'; // append null character
 
 		return out;
 }

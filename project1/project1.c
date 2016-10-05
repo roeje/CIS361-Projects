@@ -226,5 +226,5 @@ void testEncryptArray() {
 
    printf("Key is: %s\n", key);
    initializeEncyptArray(key, encr);
-   printf("Encrypted Array: %c\n", encr[0]);
+   printf("Encrypted Array: %d\n", (char)encr[0]);
 }
