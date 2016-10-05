@@ -1,3 +1,9 @@
+/*
+  CIS 361 - Lab 4
+  Jesse Roe
+  10/04/2016
+*/
+
 #include <stdio.h>
 #include <string.h>
 
