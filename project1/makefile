@@ -14,8 +14,8 @@ test1check:
 
 test2: test2encrypt test2decrypt test2check
 test2encrypt:
-	./project1 1 feather testInput2.txt testOutput2.out
+	./project1 1 hellothere testInput2.txt testOutput2.out
 test2decrypt:
-	./project1 2 feather testOutput2.out testResult2.out
+	./project1 2 hellothere testOutput2.out testResult2.out
 test2check:
 	diff -s testInput2.txt testResult2.out || echo "Files are not identical"

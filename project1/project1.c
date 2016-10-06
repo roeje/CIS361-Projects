@@ -34,13 +34,6 @@ void toUpperCase(char word[]);
 /*Encryption function declaration*/
 char encrypt(char ch, int *k, int *n, int *size);
 
-// Test Functions
-void testRmDuplicates();
-void testToUpperCase();
-void testTargetFound();
-void testEncryptArray();
-void testDecryptAarry();
-
 /*Main method*/
 int main(int argc, char *argv[]) {
 
@@ -102,6 +95,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
+// Remove duplicates from passed string
 char* removeDuplicates(char word[]) {
   int i, j, size, k;
   char* out;
@@ -122,6 +116,7 @@ char* removeDuplicates(char word[]) {
   return out;
 }
 
+// Check if passed char is present in string
 int targetFound(char charArray[], int num, char target) {
    int i;
    for (i = 0; i < num; i++) {
@@ -132,6 +127,7 @@ int targetFound(char charArray[], int num, char target) {
    return 0;
 }
 
+// Setup encryption array with key and alph characters
 void initializeEncryptArray(char key[], char encrypt[]) {
    int size, i, j;
    char base = 'Z';
@@ -149,6 +145,7 @@ void initializeEncryptArray(char key[], char encrypt[]) {
    encrypt[26] = '\0';
 }
 
+// Setup decryption array using encryption array
 void initializeDecryptArray(char encrypt[], char decrypt[]) {
 	int i;
 	for (i = 0; i < 26; i++) {
@@ -157,69 +154,36 @@ void initializeDecryptArray(char encrypt[], char decrypt[]) {
 	decrypt[26] = '\0';
 }
 
+// Read input from file, encrypt/decrypt, write to output file
 void processInput(FILE * inf, FILE * outf, char substitute[]) {
    char ch;
    while (fscanf(inf, "%c", &ch) != EOF) {
+
+      // If alpha encrypt/decrypt
       if (isalpha(ch)) {
+
+         // If uppercase, encrypt/decrypt directly and write out
          if (isupper(ch)) {
             fprintf(outf, "%c", substitute[ch - 65]);
          }
+
+         // Else, convert input to uppercase, encrypt/decrypt, and wite out
          else {
             fprintf(outf, "%c", tolower(substitute[toupper(ch) - 65]));
          }
       }
+
+      // Else simply write out non alpha characters
       else {
          fprintf(outf, "%c", ch);
       }
    }
 }
 
+// Convert passed string to uppercase
 void toUpperCase(char word[]) {
     int i;
     for (i = 0; i < strlen(word); i++) {
         word[i] = toupper(word[i]);
     }
-}
-
-void testRmDuplicates() {
-	char tmp[] = "testtest";
-	printf("New string is: %s\n", removeDuplicates(tmp));
-}
-
-void testTargetFound() {
-   char tmp[] = "hello there";
-   printf("String is: hello there\n");
-   printf("Does the String contain: ");
-   char target = 't';
-   printf("%c\n", target);
-   int x;
-   x = targetFound(tmp, 11, target);
-   printf("Result is: %d\n",x);
-}
-
-void testEncryptArray() {
-   char encrypt[26];
-   char word[] = "testtest";
-   char * key = removeDuplicates(word);
-   toUpperCase(key);
-   printf("Key is: %s\n", key);
-   initializeEncryptArray(key, encrypt);
-   printf("Encrypted Array: %s\n", encrypt);
-}
-
-void testDecryptAarry() {
-   char encrypt[26], decrypt[26];
-   char word[] = "feather";
-   char* key = removeDuplicates(word);
-   toUpperCase(key);
-   printf("Key is: %s\n", key);
-   initializeEncryptArray(key, encrypt);
-   initializeDecryptArray(encrypt, decrypt);
-   printf("Decrypt Array is: %s\n", decrypt);
-}
-
-void testToUpperCase() {
-    char word[] = "hello";
-    toUpperCase(word);
-    printf("The word is: %s\n", word);
 }
