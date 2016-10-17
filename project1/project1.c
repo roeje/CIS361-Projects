@@ -10,7 +10,6 @@
 #include <string.h>
 #include <math.h>
 
-
 // remove duplicate characters in array word and return the result string
 char * removeDuplicates(char word []);
 
