@@ -1,0 +1,223 @@
+commit 62abe58a48ac9e9264c889b5f829f6da5c70f88e
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Thu Oct 6 12:14:58 2016 -0400
+
+    Remove test functions, update makefile tests with differect keys, add comments to primary functions in project1.c
+
+commit 698373cd173604a8eeba1e4a4ce60b95fa723281
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Thu Oct 6 01:20:34 2016 -0400
+
+    create new input files for testing. update makefile with new tests.
+
+commit 354e3102de415dd9c508b04823e6477fb5dfad96
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Wed Oct 5 19:14:51 2016 -0400
+
+    create makefile. add check for correct decryption to makefile.
+
+commit 7616ed80bf70cc97d9bb9922ddd23a29f77b98c7
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Wed Oct 5 17:08:14 2016 -0400
+
+    add input/output files. Complete processInput() and main() functions. Encryption/decryption working properly
+
+commit 76822ec6d627e4b207d1ff092b8ff7097894e88a
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Wed Oct 5 01:22:57 2016 -0400
+
+    fix issue with initializeEncryptionArray function, add toUpperCase helper function. add test functions for working functions. start creating logic for main() and processInput()
+
+commit 1d4557ae57d1fed615efb94dacb9dc9f37a8e096
+Merge: 3260aab 60f31d1
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Tue Oct 4 21:00:32 2016 -0400
+
+    fixing merge issues
+
+commit 3260aab6c47ad3792eee3f896576f57723bfeb91
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Tue Oct 4 20:57:56 2016 -0400
+
+    add lab4 changes
+
+commit 60f31d13ac5003f4c5faa036f1435445802029b1
+Author: Jesse Roe <roeje@arch09.cis.gvsu.edu>
+Date:   Tue Oct 4 14:06:37 2016 -0400
+
+    update to project1 with working encrypt, decrypt functions
+
+commit bf857397e678be3f16ae7cdc98a327db70fb97ca
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Tue Oct 4 01:33:57 2016 -0400
+
+    added directory and files for project1. implemented first three function of project 1.
+
+commit 788310da1c66cbfc28b358a4f5aa1b3d015397dc
+Merge: d394d25 c572cf2
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Sun Oct 2 22:48:11 2016 -0400
+
+    Merge branch 'dev'
+
+commit c572cf288e3f6fdba7ea87ee84c3d1103512f42c
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Sun Oct 2 22:47:52 2016 -0400
+
+    update project1.c with functions for rmduplicats
+
+commit d394d2578d741267d913075f9182025008653fec
+Merge: bd5e0b2 1529503
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Sun Oct 2 22:05:29 2016 -0400
+
+    Merge branch 'dev'
+
+commit 152950304c85b883dc9d0d34a0f96abf401ef238
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Sun Oct 2 22:04:42 2016 -0400
+
+    add directory and project files for project 1
+
+commit bd5e0b245759eeb922aa1e649a4fd8b38236f6c3
+Merge: 3bbe73a 8cf80fc
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Sun Oct 2 19:23:56 2016 -0400
+
+    adding lab4
+
+commit 8cf80fccd686a2ba270d011a4aa885cba695097d
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Sun Oct 2 19:21:04 2016 -0400
+
+    add lab4 directory. add lab4.c file
+
+commit 3bbe73a5453f689b756de40e5993f9bb9455b3e6
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 27 16:56:23 2016 +0000
+
+    lab3v2.c deleted online with Bitbucket
+
+commit 5482282fa279bace632cf369f7b83635570a52ee
+Merge: 04a435a 8df584f
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 27 12:53:06 2016 -0400
+
+    Merge branch 'dev'
+
+commit 04a435ac3c37dd85ca0fcc017a8931f1ef3d96a2
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 27 12:53:03 2016 -0400
+
+    update file changes
+
+commit 8df584f0989d32fa61c9dd8343d36da6c0b43c5c
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 27 12:52:05 2016 -0400
+
+    added v2 with extra testing statements. Updated literator loops to improve speed in lab3.c
+
+commit 46d1e886535719b6318961111856e28db6195afb
+Merge: ec94753 9713070
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Tue Sep 27 09:05:29 2016 -0400
+
+    Merge branch 'dev'
+
+commit 971307000947c7b58991ab842049cb2bd15f3add
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Tue Sep 27 09:05:13 2016 -0400
+
+    working on adjusting efficientcy of dynaimc buble sort
+
+commit ec94753e77b0b048584ba3bbda30b639ce5332fc
+Merge: 719e755 74e756a
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Mon Sep 26 20:40:40 2016 -0400
+
+    delete exe for lab2
+
+commit 74e756ae207964c730d8c2f54e3be3e5921518d6
+Author:  <roeje@DESKTOP-HR3R359.gha.chartermi.net>
+Date:   Mon Sep 26 20:39:27 2016 -0400
+
+    finial version of Lab3
+
+commit 719e755ded8bcbc5ffcd3629f875df0ff81e4d59
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 20 06:00:15 2016 +0000
+
+    a.exe deleted online with Bitbucket
+
+commit 1d208aa174eae686c264d9beb47413f472c435e7
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 20 01:57:10 2016 -0400
+
+    update makefile to add -std=c99 flag
+
+commit 90caa0140b00128e661b2bdc40498fc0f326b539
+Author: Jesse Roe <Jesse Roe>
+Date:   Tue Sep 20 01:24:11 2016 -0400
+
+    final version cleaned up and commented
+
+commit e3be669ec38587b8bf5d5ff57f358f1d9c96e25a
+Author: Jesse Roe <Jesse Roe>
+Date:   Tue Sep 20 01:16:08 2016 -0400
+
+    final version of project
+
+commit 8b0289001c5f7a03f574ea918282ee634d656519
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 19 23:16:06 2016 -0400
+
+    working version of lab
+
+commit 9ac6ccc50fe27d32380ceb53d6c758bb9360c392
+Merge: 9eec5b4 2bc26b4
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 19 18:10:45 2016 -0400
+
+    Merge branch 'dev'
+
+commit 2bc26b494b4c61dfd9151d95d6da3f939a8d96d6
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 19 18:10:20 2016 -0400
+
+    updates to output.out
+
+commit 9eec5b42c64e652a2071ac868fcde04049f738bb
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Mon Sep 19 14:07:12 2016 -0400
+
+    add inital files for lab2
+
+commit cd3bfea4555864522df92bf1c2c66fa63c4a9f5c
+Author: Jesse Roe <jessedroe@gmail.com>
+Date:   Tue Sep 13 01:05:54 2016 +0000
+
+    a.exe deleted online with Bitbucket
+
+commit 55386621f17fe329f800c1b2a6d14b976c556235
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 12 21:00:13 2016 -0400
+
+    finished lab with test input and output files
+
+commit 5e91b227fbf2b8f86166f7ce2f9defdb436e2015
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 12 20:18:58 2016 -0400
+
+    working version with terminal input
+
+commit a82f01c20cd0e92aa2a316534c10da3a637d9897
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 12 17:49:19 2016 -0400
+
+    add inital code to lab file
+
+commit c28d34866f5b860d81a841fe660a97d3ddffad2c
+Author: Jesse Roe <Jesse Roe>
+Date:   Mon Sep 12 17:45:01 2016 -0400
+
+    add lab1a.c. inital coded added

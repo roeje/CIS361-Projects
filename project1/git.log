@@ -1,0 +1,52 @@
+* format62abe58 : Remove test functions, update makefile tests with differect keys, add comments to primary functions in project1.c
+* format698373c : create new input files for testing. update makefile with new tests.
+* format354e310 : create makefile. add check for correct decryption to makefile.
+* format7616ed8 : add input/output files. Complete processInput() and main() functions. Encryption/decryption working properly
+* format76822ec : fix issue with initializeEncryptionArray function, add toUpperCase helper function. add test functions for working functions. start creating logic for main() and processInput()
+*   format1d4557a : fixing merge issues
+|\  
+| * format60f31d1 : update to project1 with working encrypt, decrypt functions
+* | format3260aab : add lab4 changes
+|/  
+* formatbf85739 : added directory and files for project1. implemented first three function of project 1.
+*   format788310d : Merge branch 'dev'
+|\  
+| * formatc572cf2 : update project1.c with functions for rmduplicats
+* |   formatd394d25 : Merge branch 'dev'
+|\ \  
+| |/  
+| * format1529503 : add directory and project files for project 1
+* |   formatbd5e0b2 : adding lab4
+|\ \  
+| |/  
+| * format8cf80fc : add lab4 directory. add lab4.c file
+* | format3bbe73a : lab3v2.c deleted online with Bitbucket
+* |   format5482282 : Merge branch 'dev'
+|\ \  
+| * | format8df584f : added v2 with extra testing statements. Updated literator loops to improve speed in lab3.c
+* | | format04a435a : update file changes
+|/ /  
+* |   format46d1e88 : Merge branch 'dev'
+|\ \  
+| |/  
+| * format9713070 : working on adjusting efficientcy of dynaimc buble sort
+* |   formatec94753 : delete exe for lab2
+|\ \  
+| |/  
+| * format74e756a : finial version of Lab3
+* | format719e755 : a.exe deleted online with Bitbucket
+|/  
+* format1d208aa : update makefile to add -std=c99 flag
+* format90caa01 : final version cleaned up and commented
+* formate3be669 : final version of project
+* format8b02890 : working version of lab
+*   format9ac6ccc : Merge branch 'dev'
+|\  
+| * format2bc26b4 : updates to output.out
+* | format9eec5b4 : add inital files for lab2
+* | formatcd3bfea : a.exe deleted online with Bitbucket
+|/  
+* format5538662 : finished lab with test input and output files
+* format5e91b22 : working version with terminal input
+* formata82f01c : add inital code to lab file
+* formatc28d348 : add lab1a.c. inital coded added
