@@ -1,0 +1,17 @@
+Script started on Thu 27 Oct 2016 04:35:24 PM DST
+]0;roeje@JESSELAPTOP: /mnt/c/Users/Jesse/Documents/~Programming/cis361/lab6roeje@JESSELAPTOP:/mnt/c/Users/Jesse/Documents/~Programming/cis361/lab6$ ,[K./a.out
+mysh$ ls
+a.out  lab6.c  testScript
+mysh$ ls -l
+total 16
+-rwxrwxrwx 1 root root 9005 Oct 27 16:35 a.out
+-rwxrwxrwx 1 root root 1311 Oct 25 10:30 lab6.c
+-rwxrwxrwx 1 root root    0 Oct 27 16:35 testScript
+mysh$ pwd
+/mnt/c/Users/Jesse/Documents/~Programming/cis361/lab6
+mysh$ exit
+Exit...
+]0;roeje@JESSELAPTOP: /mnt/c/Users/Jesse/Documents/~Programming/cis361/lab6roeje@JESSELAPTOP:/mnt/c/Users/Jesse/Documents/~Programming/cis361/lab6$ exit
+exit
+
+Script done on Thu 27 Oct 2016 04:35:45 PM DST
