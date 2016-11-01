@@ -56,7 +56,7 @@ void background (char * cmd) {
    char *argv[MAXARG];
 
    tmp = strtok(cmd, "\t \n");
-   while(tmp != NULL && tmp != "\n") {
+   while(tmp != NULL && tmp != "\0") {
       argv[i] = tmp;
       tmp = strtok(NULL, "\t \n");
       i = i + 1;
