@@ -6,7 +6,7 @@
 #define  FULL  10000
 
 typedef unsigned int data;
-typedef enum {false, true} boolean;
+typedef enum {FALSE, TRUE} boolean;
 
 struct elem {
    data d;

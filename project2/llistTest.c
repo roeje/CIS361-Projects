@@ -4,20 +4,15 @@
 #include <string.h>
 #include <math.h>
 
-#include "queue.h"
-#include "list.c"
+#include "list.h"
 
 /*Main method*/
 int main(void) {
 
 	/*Define variables*/
-   node list a;
-
-
-
-   char[] a = "Test 1";
-   char[] b = "Test 2";
-   char[] c = "Test 3";
+   char a[] = "Test 1";
+   char b[] = "Test 2";
+   char c[] = "Test 3";
 
    int i;
    for (i = 0; i < 3; i++) {

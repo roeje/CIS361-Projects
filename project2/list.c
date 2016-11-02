@@ -1,42 +1,28 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "queue.h"
 
-struct node {
-   queue dataQueue;
-   char[] name;
-   struct node *next;
-};
-
-typedef struct node node;
-
-struct node *head = NULL;
-struct node *current = NULL;
+#include "list.h"
 
 void print () {
    node *tmp = head;
    printf("\n[");
 
-   while(ptr != NULL) {
-      printf("(%s) ", ptr->name);
+   while(tmp != NULL) {
+      printf("(%s) ", tmp->name);
    }
    printf(" ]\n");
 }
 
-void insert (char[] name, int data) {
+void insert (char nameValue[], int data) {
 
-   if (find(name) != NULL) {
-      node *existing = find(name);
+   if (find(nameValue) != NULL) {
+      node *existing = find(nameValue);
          enqueue(data,&(existing->dataQueue));
    }
    else {
-      struct node *tmp = (struct node*) malloc(sizeof(struct node));
+      node *tmp = (node*) malloc(sizeof(node));
 
-      tmp->name = name;
-      initialize(&(tmp->data));
-      enqueue(data, &(tmp->data));
+      tmp->name = nameValue;
+      initialize(&(tmp->dataQueue));
+      enqueue(data, &(tmp->dataQueue));
 
       // Set the new nodes next equal
       tmp->next = head;
@@ -46,15 +32,15 @@ void insert (char[] name, int data) {
    }
 }
 
-struct node* find (char[] name) {
+node* find (char nameValue[]) {
 
-   struct node* current = head;
+   node* current = head;
 
    if (head == NULL) {
       return NULL;
    }
 
-   while (!strcmp(current->name, name)) {
+   while (!strcmp(current->name, nameValue)) {
       if (current->next == NULL) {
          return NULL;
       }
@@ -65,16 +51,16 @@ struct node* find (char[] name) {
    return current;
 }
 
-struct node* delete (char[] name) {
+node* delete (char nameValue[]) {
 
-   struct node* current = head;
-   struct node* previous = NULL;
+   node* current = head;
+   node* previous = NULL;
 
    if (head == NULL) {
       return NULL;
    }
 
-   while (strcmp(current->name, name)) {
+   while (strcmp(current->name, nameValue)) {
       if (current->next == NULL) {
          return NULL;
       }
