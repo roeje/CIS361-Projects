@@ -1,12 +1,22 @@
 
 #include "list.h"
 
+node *head = NULL;
+node *current = NULL;
+
 void print () {
    node *tmp = head;
    printf("\n[");
 
    while(tmp != NULL) {
-      printf("(%s) ", tmp->name);
+      printf("(%s, ", tmp->name);
+      queue a = tmp->dataQueue;
+      while (!empty(&a)) {
+         int pid = dequeue(&a);
+         printf("%d, ", pid);
+      }
+      printf(")");
+      tmp = tmp->next;
    }
    printf(" ]\n");
 }
@@ -40,7 +50,10 @@ node* find (char nameValue[]) {
       return NULL;
    }
 
-   while (!strcmp(current->name, nameValue)) {
+   // printf("NameValue: %s\n", nameValue);
+   // printf("Compare: %d\n" , strcmp(current->name, nameValue));
+
+   while (strcmp(current->name, nameValue) != 0) {
       if (current->next == NULL) {
          return NULL;
       }

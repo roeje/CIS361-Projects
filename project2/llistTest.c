@@ -6,6 +6,7 @@
 
 #include "list.h"
 
+
 /*Main method*/
 int main(void) {
 
@@ -13,6 +14,10 @@ int main(void) {
    char a[] = "Test 1";
    char b[] = "Test 2";
    char c[] = "Test 3";
+
+	// insert(a, 0);
+	// insert(b, 0);
+	// insert(c, 0);
 
    int i;
    for (i = 0; i < 3; i++) {
@@ -24,6 +29,8 @@ int main(void) {
    for (i = 0; i < 3; i++) {
       insert(c, i);
    }
+
+	print();
 
 
    // Check to see if correct number of commandline parameter were passed

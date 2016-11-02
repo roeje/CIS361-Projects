@@ -13,9 +13,6 @@ struct node {
 
 typedef struct node node;
 
-node *head = NULL;
-node *current = NULL;
-
 void print ();
 void insert (char name[], int data);
 node* find (char name[]);
