@@ -10,11 +10,13 @@ struct node {
    struct node *next;
 };
 
+typedef struct node node;
+
 struct node *head = NULL;
 struct node *current = NULL;
 
 void print () {
-   struct node *tmp = head;
+   node *tmp = head;
    printf("\n[");
 
    while(ptr != NULL) {
@@ -26,7 +28,7 @@ void print () {
 void insert (char[] name, int data) {
 
    if (find(name) != NULL) {
-      struct node *existing = find(name);
+      node *existing = find(name);
          enqueue(data,&(existing->dataQueue));
    }
    else {

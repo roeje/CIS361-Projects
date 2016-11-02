@@ -15,6 +15,7 @@ int main(void) {
    initialize(&b);
 
    printf("Starting Test...\n");
+   // printf("A -> data: %d\n", a->);
 
    while((c == getchar()) != EOF) {
 

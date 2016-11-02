@@ -11,6 +11,7 @@
 #include <math.h>
 
 #include "queue.h"
+#include "list.c"
 
 /*Main method*/
 int main(int argc, char *argv[]) {
