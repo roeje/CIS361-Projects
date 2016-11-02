@@ -15,7 +15,7 @@ data dequeue (queue *q) {
    data d;
    elem *p;
 
-   d = q->front -> d;
+   d = q->front->d;
    p = q->front;
    q->front = q->front->next;
    q->cnt--;

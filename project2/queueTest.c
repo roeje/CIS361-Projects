@@ -14,10 +14,12 @@ int main(void) {
    initialize(&a);
    initialize(&b);
 
+   printf("Starting Test...\n");
+
    while((c == getchar()) != EOF) {
 
       switch (c) {
-         case 'A';
+         case 'A':
             assert(scanf("%u,", &pid) == 1);
             if (!full(&a)) {
                enqueue(pid,&a);
