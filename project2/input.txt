@@ -1,7 +1,7 @@
 hello world1; test te3st 1test 333 "string section" test; test() h3lp /* this is a comment */;
 void insert (char nameValue, int data) {
    if (find(nameValue) != NULL) {
-      node *existing = find(nameValue);
+      node *existing = find(nameValue); // another comment
          char string[] = "STRING!!!!!!!!!!!!";
    }
 }

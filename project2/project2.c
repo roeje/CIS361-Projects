@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
 	int foundIden = 0;
 	int runMatch = 0;
 	int lineNumber = 1;
+	int slashCounter = 0;
 	// char iden[];
 
 
@@ -51,18 +52,45 @@ int main(int argc, char *argv[]) {
 		// if character is a " then skip all characters until the next " is foundIden
 
 		if (runMatch != 0) {
-			if (c == runMatch) {
+			if (c == '/' && c == runMatch) {
+				if (slashCounter == 1) {
+					slashCounter = 0;
+					continue;
+				}
+				else {
+					runMatch = 0;
+					continue;
+				}
+			}
+			if (c == '"' && c == runMatch) {
 				runMatch = 0;
 				continue;
 			}
+			if (c == '\n') {
+				lineNumber = lineNumber + 1;
+				if (slashCounter != 0) {
+					continue;
+				}
+				else {
+					runMatch = 0;
+					continue;
+				}
+			}
 			else {
+				slashCounter = slashCounter + 1;
 				continue;
 			}
 		}
 
-		if (c == '"' || c == '/') {
+		if (c == '"') {
 			runMatch = c;
 			foundIden = 0;
+			continue;
+		}
+		if (c == '/') {
+			runMatch = c;
+			foundIden = 0;
+			slashCounter = 1;
 			continue;
 		}
 
