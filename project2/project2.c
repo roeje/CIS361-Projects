@@ -53,7 +53,9 @@ int main(int argc, char *argv[]) {
 
 		if (runMatch != 0) {
 			if (c == '/' && c == runMatch) {
+
 				if (slashCounter == 1) {
+
 					slashCounter = 0;
 					continue;
 				}
@@ -66,6 +68,11 @@ int main(int argc, char *argv[]) {
 				runMatch = 0;
 				continue;
 			}
+         if ((isspace(c) || ispunct(c)) && c != '_' && runMatch == ' ') {
+            runMatch = 0;
+            continue;
+         }
+
 			if (c == '\n') {
 				lineNumber = lineNumber + 1;
 				if (slashCounter != 0) {
@@ -77,7 +84,7 @@ int main(int argc, char *argv[]) {
 				}
 			}
 			else {
-				slashCounter = slashCounter + 1;
+
 				continue;
 			}
 		}
@@ -98,9 +105,18 @@ int main(int argc, char *argv[]) {
 			lineNumber = lineNumber + 1;
 		}
 
-		if (isalnum(c)) {
-			printf("%c", c);
-			foundIden = 1;
+		if (isalnum(c) || c == '_') {
+
+         if (isdigit(c) && foundIden == 0) {
+            runMatch = ' ';
+            foundIden = 0;
+            continue;
+         }
+         else {
+            printf("%c", c);
+   			foundIden = foundIden + 1;
+         }
+
 		}
 		else {
 			if (foundIden) {
