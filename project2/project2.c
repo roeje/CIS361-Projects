@@ -42,7 +42,8 @@ int main(int argc, char *argv[]) {
 
 	int foundIden = 0;
 	int runMatch = 0;
-	char iden[];
+	int lineNumber = 1;
+	// char iden[];
 
 
 	while ((c = fgetc(fin)) != EOF ) {
@@ -59,10 +60,14 @@ int main(int argc, char *argv[]) {
 			}
 		}
 
-		if (c == '"' || c == "/") {
+		if (c == '"' || c == '/') {
 			runMatch = c;
 			foundIden = 0;
 			continue;
+		}
+
+		if (c == '\n') {
+			lineNumber = lineNumber + 1;
 		}
 
 		if (isalnum(c)) {
@@ -71,7 +76,7 @@ int main(int argc, char *argv[]) {
 		}
 		else {
 			if (foundIden) {
-				printf("\n");
+				printf(" - %d\n", lineNumber);
 				foundIden = 0;
 			}
 		}
