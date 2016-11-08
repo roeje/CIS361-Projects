@@ -3,6 +3,8 @@
 	Jesse Roe
 */
 
+#include "test.h"
+
 hello world1; test te3st 1test 333 "string section" test; test() h3lp /* this is a comment */;
 void insert (char name_value, int 0data, int d2ta_) {
    if (_find(nameValue) != NULL) {
@@ -11,4 +13,9 @@ void insert (char name_value, int 0data, int d2ta_) {
    }
 }
 
+return
+return
+return
+return
+return
 return 0;

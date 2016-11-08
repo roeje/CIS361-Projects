@@ -48,9 +48,11 @@ void insert (char nameValue[], int data) {
    if ((existing = find(nameValue)) != NULL) {
       printf("Found Existing:\n");
       if (containsValue(&(existing->dataQueue), data)) {
+         printf("Skipped due to duplicate!");
          return;
       }
       else {
+         printf("No Duplicate found...");
          enqueue(data, &(existing->dataQueue));
       }
 

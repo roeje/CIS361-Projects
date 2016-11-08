@@ -57,7 +57,7 @@ boolean full (const queue *q) {
 boolean containsValue(const queue *q, data value) {
    // data list[10000] = q->added;
    int i;
-   for (i = 0; i < sizeof(q->added); i++) {
+   for (i = 0; i < (q->cnt); i++) {
       if ((q->added)[i] == value) {
          return 1;
       }

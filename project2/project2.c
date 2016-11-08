@@ -1,7 +1,7 @@
 /*
 	CIS 361 - Project 2
 	Jesse Roe
-	10/31/2016
+	
 */
 
 #include <ctype.h>
