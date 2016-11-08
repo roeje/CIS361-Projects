@@ -47,7 +47,13 @@ void insert (char nameValue[], int data) {
    // Determine if node already exists in linked list
    if ((existing = find(nameValue)) != NULL) {
       printf("Found Existing:\n");
-      enqueue(data, &(existing->dataQueue));
+      if (containsValue(&(existing->dataQueue), data)) {
+         return;
+      }
+      else {
+         enqueue(data, &(existing->dataQueue));
+      }
+
    }
    else {
       printf("Creating New Node\n");

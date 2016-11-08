@@ -17,6 +17,7 @@ typedef struct elem elem;
 
 struct queue {
    int cnt;
+   data added[10000];
    elem *front;
    elem *rear;
 };
@@ -28,4 +29,4 @@ data dequeue (queue *q);
 data front (const queue *q);
 boolean empty (const queue *q);
 boolean full (const queue *q);
-// boolean containsValue(const queue *q);
+boolean containsValue(const queue *q, data value);

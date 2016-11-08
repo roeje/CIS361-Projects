@@ -18,6 +18,7 @@ data dequeue (queue *q) {
    d = q->front->d;
    p = q->front;
    q->front = q->front->next;
+   (q->added)[q->cnt] = -1;
    q->cnt--;
    free(p);
    return d;
@@ -37,6 +38,7 @@ void enqueue (data d, queue *q) {
    else {
       q->front = q->rear = p;
    }
+   (q->added)[q->cnt] = d;
    q->cnt++;
 }
 
@@ -52,9 +54,13 @@ boolean full (const queue *q) {
    return ((boolean)(q->cnt == FULL));
 }
 
-// boolean containsValue(const queue *q) {
-//    queue tmp = q;
-//    while (tmp->next != NULL) {
-//
-//    }
-// }
+boolean containsValue(const queue *q, data value) {
+   // data list[10000] = q->added;
+   int i;
+   for (i = 0; i < sizeof(q->added); i++) {
+      if ((q->added)[i] == value) {
+         return 1;
+      }
+   }
+   return 0;
+}
