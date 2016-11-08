@@ -1,10 +1,3 @@
-Script started on Mon 07 Nov 2016 09:16:39 PM STD
-]0;roeje@DESKTOP-HR3R359: /mnt/e/Projects/CIS361/lab7[01;32mroeje@DESKTOP-HR3R359[00m:[01;34m/mnt/e/Projects/CIS361/lab7[00m$ currTime="date +%r"
-]0;roeje@DESKTOP-HR3R359: /mnt/e/Projects/CIS361/lab7[01;32mroeje@DESKTOP-HR3R359[00m:[01;34m/mnt/e/Projects/CIS361/lab7[00m$ echo "c[KCurrent time is '[K`$currTime'[K`
-> "
-Current time is 09:17:24 PM
-
-]0;roeje@DESKTOP-HR3R359: /mnt/e/Projects/CIS361/lab7[01;32mroeje@DESKTOP-HR3R359[00m:[01;34m/mnt/e/Projects/CIS361/lab7[00m$ exit
-exit
-
-Script done on Mon 07 Nov 2016 09:17:29 PM STD
+#! /bin/bash
+currTime="date +%r"
+echo `$currTime`
