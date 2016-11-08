@@ -28,3 +28,4 @@ data dequeue (queue *q);
 data front (const queue *q);
 boolean empty (const queue *q);
 boolean full (const queue *q);
+// boolean containsValue(const queue *q);

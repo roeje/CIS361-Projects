@@ -44,14 +44,15 @@ int main(int argc, char *argv[]) {
 	int runMatch = 0;
 	int lineNumber = 1;
 	int slashCounter = 0;
-	// char iden[];
+	char iden[100];
+	iden[0] = 0;
 
-
-	while ((c = fgetc(fin)) != EOF ) {
+	while ((c = fgetc(fin)) != EOF) {
 
 		// if character is a " then skip all characters until the next " is foundIden
 
 		if (runMatch != 0) {
+
 			if (c == '/' && c == runMatch) {
 
 				if (slashCounter == 1) {
@@ -64,10 +65,12 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 			}
+
 			if (c == '"' && c == runMatch) {
 				runMatch = 0;
 				continue;
 			}
+
          if ((isspace(c) || ispunct(c)) && c != '_' && runMatch == ' ') {
             runMatch = 0;
             continue;
@@ -84,7 +87,6 @@ int main(int argc, char *argv[]) {
 				}
 			}
 			else {
-
 				continue;
 			}
 		}
@@ -94,6 +96,7 @@ int main(int argc, char *argv[]) {
 			foundIden = 0;
 			continue;
 		}
+
 		if (c == '/') {
 			runMatch = c;
 			foundIden = 0;
@@ -113,23 +116,26 @@ int main(int argc, char *argv[]) {
             continue;
          }
          else {
-            printf("%c", c);
+            // printf("%c", c);
+				strncat(iden, &c, 1);
    			foundIden = foundIden + 1;
          }
 
 		}
 		else {
 			if (foundIden) {
-				printf(" - %d\n", lineNumber);
+				// iden[99] = 0;
+				// printf("%s", iden);
+				// printf(" - %d\n", lineNumber);
+				insert(iden, lineNumber);
+				memset(&iden[0], 0, sizeof(iden));
 				foundIden = 0;
 			}
 		}
-
-
 	}
-   // char * line = readline(fin);
+	writeToFile(fout);
 
-
+	print();
 	fclose(fin);
 	fclose(fout);
 	return 0;

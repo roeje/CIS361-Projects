@@ -51,3 +51,10 @@ boolean empty (const queue *q) {
 boolean full (const queue *q) {
    return ((boolean)(q->cnt == FULL));
 }
+
+// boolean containsValue(const queue *q) {
+//    queue tmp = q;
+//    while (tmp->next != NULL) {
+//
+//    }
+// }
