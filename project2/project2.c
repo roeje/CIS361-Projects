@@ -1,7 +1,7 @@
 /*
 	CIS 361 - Project 2
 	Jesse Roe
-	
+	11/08/2016
 */
 
 #include <ctype.h>
@@ -40,6 +40,9 @@ int main(int argc, char *argv[]) {
         exit(-1);
    }
 
+	/*
+		Declare various variables that are used to maintain character counts
+	*/
 	int foundIden = 0;
 	int runMatch = 0;
 	int lineNumber = 1;
@@ -47,12 +50,15 @@ int main(int argc, char *argv[]) {
 	char iden[100];
 	iden[0] = 0;
 
+	// Iterate over all characters in file
 	while ((c = fgetc(fin)) != EOF) {
 
 		// if character is a " then skip all characters until the next " is foundIden
-
 		if (runMatch != 0) {
-
+			/*
+				Various logic to detect different types of comments. uses counter variables to
+				determine if a // or /* is used.
+			*/
 			if (c == '/' && c == runMatch) {
 
 				if (slashCounter == 1) {
@@ -66,16 +72,19 @@ int main(int argc, char *argv[]) {
 				}
 			}
 
+			// Check for ending double quote in string
 			if (c == '"' && c == runMatch) {
 				runMatch = 0;
 				continue;
 			}
 
+			// Check for first character of a identifier being a digit.
          if ((isspace(c) || ispunct(c)) && c != '_' && runMatch == ' ') {
             runMatch = 0;
             continue;
          }
 
+			// Check for new lines that end // comments and strings
 			if (c == '\n') {
 				lineNumber = lineNumber + 1;
 				if (slashCounter != 0) {
@@ -91,12 +100,14 @@ int main(int argc, char *argv[]) {
 			}
 		}
 
+		// Check if characer is double quote if it is, reset the current word count and trigger a string case.
 		if (c == '"') {
 			runMatch = c;
 			foundIden = 0;
 			continue;
 		}
 
+		// Check if character is a slash, if it is, reset word count and trigger comment case.
 		if (c == '/') {
 			runMatch = c;
 			foundIden = 0;
@@ -104,10 +115,12 @@ int main(int argc, char *argv[]) {
 			continue;
 		}
 
+		// Check for new line, and increment line counter
 		if (c == '\n') {
 			lineNumber = lineNumber + 1;
 		}
 
+		// If character is a number, letter, or underscore,
 		if (isalnum(c) || c == '_') {
 
          if (isdigit(c) && foundIden == 0) {
@@ -116,26 +129,26 @@ int main(int argc, char *argv[]) {
             continue;
          }
          else {
-            // printf("%c", c);
 				strncat(iden, &c, 1);
    			foundIden = foundIden + 1;
          }
 
 		}
+
+		// If we dont match any of the above, the word is finished and we can add to list
 		else {
 			if (foundIden) {
-				// iden[99] = 0;
-				// printf("%s", iden);
-				// printf(" - %d\n", lineNumber);
 				insert(iden, lineNumber);
 				memset(&iden[0], 0, sizeof(iden));
 				foundIden = 0;
 			}
 		}
 	}
+
+	// Call list function that writes the contents of the list to an output file.
 	writeToFile(fout);
 
-	print();
+	// Close all files
 	fclose(fin);
 	fclose(fout);
 	return 0;

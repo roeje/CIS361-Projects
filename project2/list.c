@@ -1,9 +1,19 @@
+/*
+   Created by Jesse Roe
+
+   Linked list implementation in C
+
+*/
+
 
 #include "list.h"
 
 node *head = NULL;
 node *current = NULL;
 
+/*
+   Print linked list to console
+*/
 void print () {
    node *tmp = head;
    printf("\n[");
@@ -21,9 +31,11 @@ void print () {
    printf(" ]\n");
 }
 
+/*
+   Write linked list to provided file
+*/
 void writeToFile (FILE *file) {
    node *tmp = head;
-   // printf("\n[");
 
    while(tmp != NULL) {
       fprintf(file, "%s ", tmp->name);
@@ -35,30 +47,29 @@ void writeToFile (FILE *file) {
       fprintf(file, "\n");
       tmp = tmp->next;
    }
-   // printf(" ]\n");
 }
 
+/*
+   Insert data into front of list
+*/
 void insert (char nameValue[], int data) {
-   printf("String: %s\n", nameValue);
 
    // Create temp node for find return value
    node *existing;
 
    // Determine if node already exists in linked list
    if ((existing = find(nameValue)) != NULL) {
-      printf("Found Existing:\n");
+
+      // Check if queue already contains data
       if (containsValue(&(existing->dataQueue), data)) {
-         printf("Skipped due to duplicate!");
          return;
       }
       else {
-         printf("No Duplicate found...");
          enqueue(data, &(existing->dataQueue));
       }
 
    }
    else {
-      printf("Creating New Node\n");
       node *tmp = (node*) malloc(sizeof(node));
 
       strcpy(tmp->name, nameValue);
@@ -73,6 +84,9 @@ void insert (char nameValue[], int data) {
    }
 }
 
+/*
+   Locate a node in the list or return NULL
+*/
 node* find (char nameValue[]) {
 
    node* current = head;
@@ -80,11 +94,6 @@ node* find (char nameValue[]) {
    if (head == NULL) {
       return NULL;
    }
-   printf("\n");
-   printf("NameValue: %s\n", nameValue);
-   printf("Current->name: %s\n", current->name);
-   printf("Compare: %d\n" , strcmp(current->name, nameValue));
-   printf("\n");
 
    while (strcmp(current->name, nameValue) != 0) {
       if (current->next == NULL) {
@@ -97,6 +106,9 @@ node* find (char nameValue[]) {
    return current;
 }
 
+/*
+   Delete a node from the list
+*/
 node* delete (char nameValue[]) {
 
    node* current = head;

@@ -3,19 +3,18 @@
 	Jesse Roe
 */
 
+include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include "test.h"
 
 hello world1; test te3st 1test 333 "string section" test; test() h3lp /* this is a comment */;
+
 void insert (char name_value, int 0data, int d2ta_) {
    if (_find(nameValue) != NULL) {
       node *existing = find(nameValue_); // another comment 2 _ da3f
          char string[] = "STRIN2G!!!_!!!!";
    }
 }
-
-return
-return
-return
-return
-return
 return 0;

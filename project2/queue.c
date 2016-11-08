@@ -1,16 +1,23 @@
 /*
+   Created by Jesse Roe
    Basic queue implemention
    Based on implementation in A Book on C - Programming in C 4th
 */
 
 #include "queue.h"
 
+/*
+   Setup basic elemnets of q
+*/
 void initialize (queue *q) {
    q->cnt = 0;
    q->front = NULL;
    q->rear = NULL;
 }
 
+/*
+   Dequeue front of queue
+*/
 data dequeue (queue *q) {
    data d;
    elem *p;
@@ -24,6 +31,9 @@ data dequeue (queue *q) {
    return d;
 }
 
+/*
+   Insert one element into queue
+*/
 void enqueue (data d, queue *q) {
    elem *p;
 
@@ -42,18 +52,30 @@ void enqueue (data d, queue *q) {
    q->cnt++;
 }
 
+/*
+   Return first element of queue
+*/
 data front (const queue *q) {
    return (q->front->d);
 }
 
+/*
+   Check if queue is empty
+*/
 boolean empty (const queue *q) {
    return ((boolean)(q->cnt == EMPTY));
 }
 
+/*
+   Check if queue is full
+*/
 boolean full (const queue *q) {
    return ((boolean)(q->cnt == FULL));
 }
 
+/*
+   Check if queue already contains a certain value
+*/
 boolean containsValue(const queue *q, data value) {
    // data list[10000] = q->added;
    int i;
