@@ -132,7 +132,6 @@ int main(int argc, char *argv[]) {
 				strncat(iden, &c, 1);
    			foundIden = foundIden + 1;
          }
-
 		}
 
 		// If we dont match any of the above, the word is finished and we can add to list

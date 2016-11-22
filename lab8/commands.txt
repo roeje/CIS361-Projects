@@ -1,0 +1,11 @@
+2)  sort -t$',' -k2 < lab8 > lab8a
+
+   also works maybe:  awk -F'[:,]' '{print $1, $2, $3}' lab8 | sort -k2 >
+test1
+
+3)  gawk -F, '{printf "%s\t%s\t%s\n", $3, $2, $1}' lab8a
+ > lab8b
+
+
+
+ ^.+?(?=\s)
