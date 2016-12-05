@@ -1,0 +1,11 @@
+# /bin/bash
+while read line
+do
+	set $line
+	for i in $*
+	do		
+		head=$1
+		shift
+		echo $* $head
+	done
+done <  
