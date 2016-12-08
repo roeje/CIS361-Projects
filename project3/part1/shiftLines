@@ -1,11 +1,22 @@
-# /bin/bash
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "Missing Input File"
+fi
+
+export inputcount=0
+
 while read line
 do
+	inputcount=$((inputcount+1))
 	set $line
-	for i in $*
-	do		
-		head=$1
-		shift
-		echo $* $head
-	done
-done < test.dat 
+	head=$1	
+	for i in $*	
+	do
+		shift		
+		echo $* $head		
+		head="$head $1"
+
+	done	
+done < $* 
