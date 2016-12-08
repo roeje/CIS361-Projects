@@ -1,0 +1,25 @@
+Git log for project 2:
+
+* d3e307a : add working make file
+* 2851ece : add comments to all code. clean up print statements and other commented code
+* 22a92fe : fix error in queue containsValue funciton
+* acc591d : add logic to queue.c to limit enqueue of duplicate values
+* 6d4b8ca : finished lab 7
+* 9766e42 : add logic to store each identifier in linked list, add logic to write ll contents to output.txt
+* bd95021 : add logic to detect unique identifiers. fix bug in double slash comments
+* 3b80b09 : add logic to check for // comments. currently not working
+* c640ac6 : finish basic parse logic. create input data for testing.
+* 44c8c3a : add logic for basic parsing to project2.c
+* fa31091 : add input output files
+* b853c04 : add baisc file io to project2.c. create input output files
+* 50981d0 : add test for linked list and queue. add basic makefile
+* bffb126 : various bug fixes in list.c. add header file for list.c
+* 5c36fa2 : add test file for linked list
+* dc4ef2a : fix minor bugs in queue.c and queueTest.c
+* 79d52e6 : add test for queue and test input
+* f5f0fc0 : add include of queue.h to project2.c
+* 04acc3d : added queue test file. add code for list.c
+*   eb67a92 : Merge branch 'master' into dev
+|\  
+| * 525a105 : add directory for project 2. add queue implementation .c and .h files
+

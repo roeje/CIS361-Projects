@@ -1,0 +1,30 @@
+#! /bin/tcsh
+
+echo "Starting"
+echo -n "Enter a between 1 and 7 values: "
+
+set list = ($<)
+
+echo $list[1]
+
+if ($#list == 0) then
+	echo "Must provide paramers"
+endif
+
+if ($#list > 0 && $#list < 8) then
+	set sum = 0
+	set avg = 0
+	foreach i ($list[*])
+		@ sum += $i
+	end
+	echo $sum
+	@ avg = ($sum)/($#list)
+	echo $avg
+endif
+
+if ($#list > 7) then
+	echo "Incorrect # of  Parameters"
+
+endif
+
+echo "ending"
