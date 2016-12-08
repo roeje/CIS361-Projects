@@ -1,0 +1,22 @@
+2)  sort -t$',' -k2 < lab8 > lab8a
+
+3)  gawk -F, '{printf "%s\t%s\t%s\n", $3, $2, $1}' lab8a > lab8b
+
+4) sed -r 's/(all |inter )//g' lab8b > lab8c
+
+This REGEX Works: [a-z]*?[\s]
+
+sed -r 's/[a-z]*?[\s]//' lab8b > lab8c
+
+ ^.+?\s
+
+ ^.\B.+?\s
+
+ [FW].+?[\s]
+
+
+ 5)
+
+ # /bin/bash
+ arg=$1
+ echo $arg | grep -Eo '[^\/]+(?=\/$|$)'
