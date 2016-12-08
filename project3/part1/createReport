@@ -13,6 +13,7 @@ done
 
 sort -u -o "$1" "$1"
 count=$(cat "$1" | wc -l)
+orgcount=$(cat "test.dat" | wc -l)
 
-echo "The number of lines in input file: $inputcount" >> $1
-echo "The number of lines in output file: $count" >> $1
+echo "The number of lines in input file: $orgcount" >> $1
+echo "The number of lines in $1: $count" >> $1
